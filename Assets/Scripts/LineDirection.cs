@@ -4,21 +4,77 @@ using UnityEngine;
 
 public class LineDirection : MonoBehaviour
 {
-    [SerializeField]
-    private LineRenderer lineRenderer;
+    [SerializeField] private float shootPower;
+    [SerializeField] private float stopVelocity = .05f;
+    [SerializeField] private LineRenderer lineRenderer;
 
-    private void Update()
+    private bool isIdle;
+    private bool isAiming;
+
+    private Rigidbody rigidbody;
+
+    private void Awake() {
+        rigidbody = GetComponent<Rigidbody>();
+
+        isAiming = false;
+        lineRenderer.enabled = false;
+
+    }
+
+    private void FixedUpdate()
     {
+        if(rigidbody.velocity.magnitude < stopVelocity) {
+            Stop();
+        }
+
+
+        ProcessAim();
+
+
+
+
+
+        
+    }
+
+    private void OnMouseDown() {
+        if (isIdle) {
+            isAiming = true;
+        }
+    }
+
+    private void ProcessAim() {
+        if(!isAiming || !isIdle) {
+            return;
+        }
+
         Vector3? worldPoint = CastMouseClickRay();
 
-        if (!worldPoint.HasValue)
-        {
+        if (!worldPoint.HasValue) {
             return;
         }
 
         DrawLine(worldPoint.Value);
+
+        if (Input.GetMouseButtonUp(0)) {
+            Shoot(worldPoint.Value);
+        }
     }
-private void DrawLine(Vector3 worldPoint)
+
+    private void Shoot(Vector3 worldPoint) {
+        isAiming = false;
+        lineRenderer.enabled = false;
+
+        Vector3 horizontalWorldPoint = new Vector3(worldPoint.x, transform.position.y, worldPoint.z);
+
+        Vector3 direction = (horizontalWorldPoint - transform.position).normalized;
+        float strength = Vector3.Distance(transform.position, horizontalWorldPoint);
+
+        rigidbody.AddForce(direction * strength * shootPower);
+        isIdle = false;
+    }
+
+    private void DrawLine(Vector3 worldPoint)
     {
         Vector3[] positions = {
 transform.position,worldPoint};
@@ -47,5 +103,11 @@ transform.position,worldPoint};
         {
             return null;
         }
+    }
+
+    private void Stop() {
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+        isIdle = true;
     }
 }
