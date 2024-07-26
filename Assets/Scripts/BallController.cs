@@ -130,6 +130,11 @@ public class BallController : MonoBehaviour
         get { return isStationary; }
     }
 
+    public bool IsPreparingToShoot
+    {
+        get { return isPreparingToShoot; }
+    }
+
     // Method to get the position of the ball at the start of the kick
     public Vector3 GetStartPosition()
     {

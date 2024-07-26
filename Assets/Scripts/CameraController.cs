@@ -31,7 +31,8 @@ public class CameraController : MonoBehaviour
             {
                 FollowBall();
             }
-            else
+            
+            if (!ballController.IsPreparingToShoot && ballController.IsStationary)
             {
                 RotateAroundBall();
             }
@@ -42,6 +43,10 @@ public class CameraController : MonoBehaviour
     {
         Vector3 targetPosition = ballTransform.position + offset;
         transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+
+
+        transform.LookAt(ballTransform);
+
     }
 
     private void RotateAroundBall()
