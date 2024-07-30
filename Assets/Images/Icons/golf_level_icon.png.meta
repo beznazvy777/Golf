@@ -108,18 +108,249 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: golf_level_icon_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 720
+        width: 237
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1eff6f10bb44414ca02bc59e1d36344
+      internalID: 2048972020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_level_icon_5
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 725
+        width: 240
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 805dc79573b8a3f4d8d71997d49d919c
+      internalID: 1279339787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_level_icon_6
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 720
+        width: 240
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e34c03ec14bc1e43b890c5661e8e81f
+      internalID: 816281445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_level_icon_9
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 492
+        width: 241
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b88e81dde8fa08441887b28948f04789
+      internalID: 187631640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_level_icon_10
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 492
+        width: 248
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e373c96699838649bc88a135c2547ab
+      internalID: -407632881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_level_icon_11
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 492
+        width: 241
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 794818fc7aab0a2428404a39b15c5b89
+      internalID: 1976094493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_level_icon_14
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 249
+        width: 241
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3dbcb884ac943f488cf3ea6ce31f540
+      internalID: -1668485973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_level_icon_16
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 42
+        width: 209
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a948f03b898031f4381c55f59ce102d8
+      internalID: -69424380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_level_icon_17
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 44
+        width: 211
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eaf09109abf0a14983da5534798a869
+      internalID: 556430381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_level_icon_18
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 44
+        width: 195
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e3146d039318744a90832b7a79b9251
+      internalID: 965643004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 281ee6631a270c343a69cfb41a304962
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      golf_level_icon_0: -1826925790
+      golf_level_icon_1: 2048972020
+      golf_level_icon_10: -407632881
+      golf_level_icon_11: 1976094493
+      golf_level_icon_12: -328943523
+      golf_level_icon_13: -1802830716
+      golf_level_icon_14: -1668485973
+      golf_level_icon_15: 995332204
+      golf_level_icon_16: -69424380
+      golf_level_icon_17: 556430381
+      golf_level_icon_18: 965643004
+      golf_level_icon_19: -824247108
+      golf_level_icon_2: -89717640
+      golf_level_icon_20: -1003133291
+      golf_level_icon_3: 1547820835
+      golf_level_icon_4: -906882066
+      golf_level_icon_5: 1279339787
+      golf_level_icon_6: 816281445
+      golf_level_icon_7: 1891027435
+      golf_level_icon_8: -1956432367
+      golf_level_icon_9: 187631640
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

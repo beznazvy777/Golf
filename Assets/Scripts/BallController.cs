@@ -16,9 +16,11 @@ public class BallController : MonoBehaviour
     // Other existing variables and methods
 
     private Vector3 startPosition;
-
+    private CountManager countManager;
     private void Start()
     {
+        countManager = FindObjectOfType<CountManager>();
+        countManager.ResetHitCount();
         ballRigidbody = GetComponent<Rigidbody>();
         isPreparingToShoot = false;
         aimLineRenderer.enabled = false;
@@ -61,6 +63,7 @@ public class BallController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             LaunchBall(targetPoint.Value);
+            countManager.HitCount();
         }
     }
 
@@ -78,9 +81,9 @@ public class BallController : MonoBehaviour
 
         // Apply horizontal launch force
         ballRigidbody.AddForce(launchDirection * power * launchForce);
-
+        
         // Apply vertical bounce force
-        ballRigidbody.AddForce(Vector3.up * bounceForce, ForceMode.Impulse);
+        ballRigidbody.AddForce(Vector3.up * bounceForce * power/10, ForceMode.Impulse);
 
         isStationary = false;
     }

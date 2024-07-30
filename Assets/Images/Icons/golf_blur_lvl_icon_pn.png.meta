@@ -108,18 +108,246 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: golf_blur_lvl_icon_pn_0
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 710
+        width: 265
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86d35464173d4d241b88b37475f2bf8f
+      internalID: -763132269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_blur_lvl_icon_pn_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 16
+        width: 250
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3448802e91485da4e8872324b792045f
+      internalID: -1967285197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_blur_lvl_icon_pn_2
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 19
+        width: 232
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d20d07eba9938e428f4f418bec4a73e
+      internalID: 436513071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_blur_lvl_icon_pn_5
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 21
+        width: 249
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88a49599b165365409e4ebcf682b65d8
+      internalID: -1080792931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_blur_lvl_icon_pn_3
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 696
+        width: 279
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3cbd81f7bdb84c4b994fc9fc0a5a1ab
+      internalID: 1789938306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_blur_lvl_icon_pn_4
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 701
+        width: 282
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01bed0c7b71ed9145b5e150e7d3fb9c8
+      internalID: 1665100549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_blur_lvl_icon_pn_6
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 478
+        width: 285
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7486b745f2bd67f4eb254cc4ab129162
+      internalID: 681645800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_blur_lvl_icon_pn_7
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 477
+        width: 282
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 468e28c4a79aa914ca8329fe976dac09
+      internalID: -1692742773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_blur_lvl_icon_pn_8
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 489
+        width: 285
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96378e8350b9cfe44ab1c2de0147f464
+      internalID: 633651124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golf_blur_lvl_icon_pn_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 225
+        width: 259
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 552e9acb89ea87d40b6b24df8ee11b70
+      internalID: -282146135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 056ea5659c698654fa7adf20c920b0bd
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      golf_blur_lvl_icon_pn_0: -763132269
+      golf_blur_lvl_icon_pn_1: -1967285197
+      golf_blur_lvl_icon_pn_10: 1599158960
+      golf_blur_lvl_icon_pn_11: -1635331220
+      golf_blur_lvl_icon_pn_12: -254844929
+      golf_blur_lvl_icon_pn_13: -589101283
+      golf_blur_lvl_icon_pn_14: 836125519
+      golf_blur_lvl_icon_pn_15: -197345348
+      golf_blur_lvl_icon_pn_16: -849535676
+      golf_blur_lvl_icon_pn_17: 120818061
+      golf_blur_lvl_icon_pn_2: 436513071
+      golf_blur_lvl_icon_pn_3: 1789938306
+      golf_blur_lvl_icon_pn_4: 1665100549
+      golf_blur_lvl_icon_pn_5: -1080792931
+      golf_blur_lvl_icon_pn_6: 681645800
+      golf_blur_lvl_icon_pn_7: -1692742773
+      golf_blur_lvl_icon_pn_8: 633651124
+      golf_blur_lvl_icon_pn_9: -282146135
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

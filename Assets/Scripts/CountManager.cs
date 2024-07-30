@@ -1,0 +1,70 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class CountManager : MonoBehaviour
+{
+    [SerializeField] Text TimeText;
+    [SerializeField] Text HitCountText;
+    [SerializeField] Text ScoreCountText;
+
+    [Header("Values")]
+    public float timer;
+    public float timeSpeed;
+    public float hitCount;
+    public int scoreCount;
+
+    [Header("Score/Values")]
+    [SerializeField] int maxHitScore;
+    [SerializeField] int mediumHitScore;
+    [SerializeField] int lowHitScore;
+
+    void Start()
+    {
+        scoreCount = PlayerPrefs.GetInt("Score");
+        ResetHitCount();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        GameTimer();
+    }
+
+    public void GameTimer() {
+        timer -= Time.deltaTime * timeSpeed;
+        float timeMinutes = ((float)(timer / 60)) % 60;
+        if(timer <= 0) {
+            timer = 0;
+            Debug.Log("GameOver");
+        }
+
+        TimeText.text = timeMinutes.ToString("0.00");
+    }
+
+    public void HitCount() {
+        hitCount++;
+        HitCountText.text = hitCount.ToString();
+    }
+
+    public void ResetHitCount() {
+        hitCount = 0;
+        HitCountText.text = hitCount.ToString();
+    }
+
+    public void ScoreCounter() {
+        if(hitCount <= 1) {
+            scoreCount += maxHitScore;
+        }
+        if (hitCount >1 && hitCount <= 3) {
+            scoreCount += mediumHitScore;
+        }
+        if (hitCount > 3) {
+            scoreCount += lowHitScore;
+        }
+
+        ScoreCountText.text = scoreCount.ToString();
+    }
+}

@@ -45,10 +45,8 @@ public class LevelSelectionController : MonoBehaviour
     [Header("Level_9")]
     [SerializeField] GameObject Level_9_Active;
     [SerializeField] GameObject Level_9_Deactive;
-    [Space]
-    [Header("Level_10")]
-    [SerializeField] GameObject Level_10_Active;
-    [SerializeField] GameObject Level_10_Deactive;
+    
+    
     
 
     void Awake()
@@ -83,9 +81,8 @@ public class LevelSelectionController : MonoBehaviour
         yield return null;
     }
 
-    void StartLevelUIConfig()
-    {
-
+    void StartLevelUIConfig() {
+        PlayerPrefs.SetInt("Level2", 0);
         Level_1_Active.SetActive(true);
 
         int l2 = PlayerPrefs.GetInt("Level2");
@@ -100,111 +97,85 @@ public class LevelSelectionController : MonoBehaviour
 
 
         //Level 2
-        if (l2 == 1)
-        {
+        if (l2 == 1) {
             Level_2_Active.SetActive(true);
             Level_2_Deactive.SetActive(false);
         }
-        else
-        {
+        else {
             Level_2_Active.SetActive(false);
             Level_2_Deactive.SetActive(true);
         }
 
         //Level 3
-        if (l3 == 1)
-        {
+        if (l3 == 1) {
             Level_3_Active.SetActive(true);
             Level_3_Deactive.SetActive(false);
         }
-        else
-        {
+        else {
             Level_3_Active.SetActive(false);
             Level_3_Deactive.SetActive(true);
         }
 
-        ////Level 4
-        //if (l4 == 1)
-        //{
-        //    Level_4_Active.SetActive(true);
-        //    Level_4_Deactive.SetActive(false);
-        //}
-        //else
-        //{
-        //    Level_4_Active.SetActive(false);
-        //    Level_4_Deactive.SetActive(true);
-        //}
+        //Level 4
+        if (l4 == 1) {
+            Level_4_Active.SetActive(true);
+            Level_4_Deactive.SetActive(false);
+        }
+        else {
+            Level_4_Active.SetActive(false);
+            Level_4_Deactive.SetActive(true);
+        }
 
-        ////Level 5
-        //if (l5 == 1)
-        //{
-        //    Level_5_Active.SetActive(true);
-        //    Level_5_Deactive.SetActive(false);
-        //}
-        //else
-        //{
-        //    Level_5_Active.SetActive(false);
-        //    Level_5_Deactive.SetActive(true);
-        //}
+        //Level 5
+        if (l5 == 1) {
+            Level_5_Active.SetActive(true);
+            Level_5_Deactive.SetActive(false);
+        }
+        else {
+            Level_5_Active.SetActive(false);
+            Level_5_Deactive.SetActive(true);
+        }
 
-        ////Level 6
-        //if (l6 == 1)
-        //{
-        //    Level_6_Active.SetActive(true);
-        //    Level_6_Deactive.SetActive(false);
-        //}
-        //else
-        //{
-        //    Level_6_Active.SetActive(false);
-        //    Level_6_Deactive.SetActive(true);
-        //}
+        //Level 6
+        if (l6 == 1) {
+            Level_6_Active.SetActive(true);
+            Level_6_Deactive.SetActive(false);
+        }
+        else {
+            Level_6_Active.SetActive(false);
+            Level_6_Deactive.SetActive(true);
+        }
 
-        ////Level 7
-        //if (l7 == 1)
-        //{
-        //    Level_7_Active.SetActive(true);
-        //    Level_7_Deactive.SetActive(false);
-        //}
-        //else
-        //{
-        //    Level_7_Active.SetActive(false);
-        //    Level_7_Deactive.SetActive(true);
-        //}
+        //Level 7
+        if (l7 == 1) {
+            Level_7_Active.SetActive(true);
+            Level_7_Deactive.SetActive(false);
+        }
+        else {
+            Level_7_Active.SetActive(false);
+            Level_7_Deactive.SetActive(true);
+        }
 
-        ////Level 8
-        //if (l8 == 1)
-        //{
-        //    Level_8_Active.SetActive(true);
-        //    Level_8_Deactive.SetActive(false);
-        //}
-        //else
-        //{
-        //    Level_8_Active.SetActive(false);
-        //    Level_8_Deactive.SetActive(true);
-        //}
+        //Level 8
+        if (l8 == 1) {
+            Level_8_Active.SetActive(true);
+            Level_8_Deactive.SetActive(false);
+        }
+        else {
+            Level_8_Active.SetActive(false);
+            Level_8_Deactive.SetActive(true);
+        }
 
-        ////Level 9
-        //if (l9 == 1)
-        //{
-        //    Level_9_Active.SetActive(true);
-        //    Level_9_Deactive.SetActive(false);
-        //}
-        //else
-        //{
-        //    Level_9_Active.SetActive(false);
-        //    Level_9_Deactive.SetActive(true);
-        //}
+        //Level 9
+        if (l9 == 1) {
+            Level_9_Active.SetActive(true);
+            Level_9_Deactive.SetActive(false);
+        }
+        else {
+            Level_9_Active.SetActive(false);
+            Level_9_Deactive.SetActive(true);
+        }
 
-        ////Level 10
-        //if (l10 == 1)
-        //{
-        //    Level_10_Active.SetActive(true);
-        //    Level_10_Deactive.SetActive(false);
-        //}
-        //else
-        //{
-        //    Level_10_Active.SetActive(false);
-        //    Level_10_Deactive.SetActive(true);
-        //}
+     
     }
 }
