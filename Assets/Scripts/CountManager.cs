@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class CountManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class CountManager : MonoBehaviour
     [SerializeField] int mediumHitScore;
     [SerializeField] int lowHitScore;
 
+    public event EventHandler OnHitActiveCount;
+    public event EventHandler OnScoreActiveCount;
     void Start()
     {
         scoreCount = PlayerPrefs.GetInt("Score");
@@ -47,6 +50,7 @@ public class CountManager : MonoBehaviour
     public void HitCount() {
         hitCount++;
         HitCountText.text = hitCount.ToString();
+        OnHitActiveCount?.Invoke(this, EventArgs.Empty);
     }
 
     public void ResetHitCount() {
@@ -55,6 +59,8 @@ public class CountManager : MonoBehaviour
     }
 
     public void ScoreCounter() {
+
+
         if(hitCount <= 1) {
             scoreCount += maxHitScore;
         }
@@ -66,5 +72,6 @@ public class CountManager : MonoBehaviour
         }
 
         ScoreCountText.text = scoreCount.ToString();
+        OnScoreActiveCount?.Invoke(this, EventArgs.Empty);
     }
 }

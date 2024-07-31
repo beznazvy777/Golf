@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     private GameObject currentBall;
     private Vector3 lastKickStartPosition;
 
+    public bool playerWin;
+    public bool playerLoseBall;
+
     private void Start()
     {
         // Initially spawn the ball at the origin
@@ -19,8 +22,9 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         // Check if the current ball has fallen off the ground
-        if (currentBall != null && currentBall.transform.position.y < -1)
+        if (currentBall != null && currentBall.transform.position.y < -10)
         {
+            
             Destroy(currentBall);
             currentBall = null;
         }
@@ -29,6 +33,7 @@ public class GameManager : MonoBehaviour
         if (currentBall == null)
         {
             SpawnNewBall(lastKickStartPosition);
+
         }
 
         // Update the last kick start position when the ball starts moving
@@ -50,5 +55,11 @@ public class GameManager : MonoBehaviour
 
         // Reset the last kick start position when a new ball is spawned
         lastKickStartPosition = Vector3.zero;
+    }
+
+    public IEnumerator DestroyBallInHole() {
+        yield return new WaitForSeconds(2);
+        Destroy(currentBall);
+        currentBall = null;
     }
 }

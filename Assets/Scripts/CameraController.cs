@@ -19,11 +19,13 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (ballTransform.position.y < -1)
-        {
-            shouldFollowBall = false;
-            return;
+        if (ballTransform) {
+            if (ballTransform.position.y < -1) {
+                shouldFollowBall = false;
+                return;
+            }
         }
+       
 
         if (shouldFollowBall)
         {
@@ -41,11 +43,14 @@ public class CameraController : MonoBehaviour
 
     private void FollowBall()
     {
-        Vector3 targetPosition = ballTransform.position + offset;
-        transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+        if (ballTransform) {
+            Vector3 targetPosition = ballTransform.position + offset;
+            transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
 
 
-        transform.LookAt(ballTransform);
+            transform.LookAt(ballTransform);
+        }
+        
 
     }
 

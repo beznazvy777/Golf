@@ -143,4 +143,15 @@ public class BallController : MonoBehaviour
     {
         return startPosition;
     }
+
+    public void OnTriggerEnter(Collider other) {
+
+        if (other.GetComponent<HoleManager>()) {
+            other.GetComponent<HoleManager>().BallInHole();
+        }
+    }
+
+
+
+
 }
