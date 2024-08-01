@@ -24,6 +24,11 @@ public class CountManager : MonoBehaviour
 
     public event EventHandler OnHitActiveCount;
     public event EventHandler OnScoreActiveCount;
+    public event EventHandler OnMaxScoreFX;
+    public event EventHandler OnMediumScoreFX;
+    public event EventHandler OnLowScoreFX;
+
+
     void Start()
     {
         scoreCount = PlayerPrefs.GetInt("Score");
@@ -63,12 +68,15 @@ public class CountManager : MonoBehaviour
 
         if(hitCount <= 1) {
             scoreCount += maxHitScore;
+            OnMaxScoreFX?.Invoke(this, EventArgs.Empty);
         }
         if (hitCount >1 && hitCount <= 3) {
             scoreCount += mediumHitScore;
+            OnMediumScoreFX?.Invoke(this, EventArgs.Empty);
         }
         if (hitCount > 3) {
             scoreCount += lowHitScore;
+            OnLowScoreFX?.Invoke(this, EventArgs.Empty);
         }
 
         ScoreCountText.text = scoreCount.ToString();

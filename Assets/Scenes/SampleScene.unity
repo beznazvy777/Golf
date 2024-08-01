@@ -17540,6 +17540,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitTextAnimator: {fileID: 613065923}
   scoreTextAnimator: {fileID: 1939872410}
+  SuperScoreFx: {fileID: 1792681477468435628, guid: 1de2f16a5233ca74f8f0c1e7a5ca33b0, type: 3}
+  MediumScoreFx: {fileID: 8479921820555848908, guid: ad9c983a03852774ba344066c198d153, type: 3}
+  LowScoreFx: {fileID: 6440113653322867177, guid: fdda2d6cb815b2941bf69e94fcd13878, type: 3}
 --- !u!43 &1796678041
 Mesh:
   m_ObjectHideFlags: 0
