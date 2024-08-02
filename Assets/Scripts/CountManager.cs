@@ -8,9 +8,14 @@ using System;
 public class CountManager : MonoBehaviour
 {
     [SerializeField] Text TimeText;
+    [SerializeField] Text TimeTextBack;
+    [Space]
     [SerializeField] Text HitCountText;
+    [SerializeField] Text HitCountTextBack;
+    [Space]
     [SerializeField] Text ScoreCountText;
-
+    [SerializeField] Text ScoreCountTextBack;
+    
     [Header("Values")]
     public float timer;
     public float timeSpeed;
@@ -50,17 +55,20 @@ public class CountManager : MonoBehaviour
         }
 
         TimeText.text = timeMinutes.ToString("0.00");
+        TimeTextBack.text = TimeText.text;
     }
 
     public void HitCount() {
         hitCount++;
         HitCountText.text = hitCount.ToString();
+        HitCountTextBack.text = HitCountText.text;
         OnHitActiveCount?.Invoke(this, EventArgs.Empty);
     }
 
     public void ResetHitCount() {
         hitCount = 0;
         HitCountText.text = hitCount.ToString();
+        HitCountTextBack.text = HitCountText.text;
     }
 
     public void ScoreCounter() {
@@ -80,6 +88,7 @@ public class CountManager : MonoBehaviour
         }
 
         ScoreCountText.text = scoreCount.ToString();
+        ScoreCountTextBack.text = ScoreCountText.text;
         OnScoreActiveCount?.Invoke(this, EventArgs.Empty);
     }
 }

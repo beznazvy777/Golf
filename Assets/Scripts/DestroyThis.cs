@@ -1,18 +1,17 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyThis : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float timeToDestroy;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        Invoke("Destroy", timeToDestroy);
+    }
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 }

@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 8918145569547230310}
   - component: {fileID: 6899796312046155013}
   - component: {fileID: 962148367016125494}
+  - component: {fileID: 3294912873996942705}
   m_Layer: 5
   m_Name: GOOD UI Canvas FX
   m_TagString: Untagged
@@ -351,3 +352,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3294912873996942705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6440113653322867177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6405090d6ea2424a8237a23cd24554d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroy: 3.5
