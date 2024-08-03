@@ -7,6 +7,21 @@ using System;
 
 public class CountManager : MonoBehaviour
 {
+
+    enum Levels {
+        Level1,
+        Level2,
+        Level3,
+        Level4,
+        Level5,
+        Level6,
+        Level7,
+        Level8,
+        Level9
+    }
+
+    [SerializeField] Levels nextLevelSelector;
+
     [SerializeField] Text TimeText;
     [SerializeField] Text TimeTextBack;
     [Space]
@@ -15,17 +30,25 @@ public class CountManager : MonoBehaviour
     [Space]
     [SerializeField] Text ScoreCountText;
     [SerializeField] Text ScoreCountTextBack;
-    
+    [Space]
+    [SerializeField] Text UpdateScoreCountText;
+    [SerializeField] Text UpdateScoreCountTextBack;
+
     [Header("Values")]
     public float timer;
     public float timeSpeed;
     public float hitCount;
     public int scoreCount;
+    public int winLevelScore;
+    private string levelPrefs; 
 
     [Header("Score/Values")]
     [SerializeField] int maxHitScore;
     [SerializeField] int mediumHitScore;
     [SerializeField] int lowHitScore;
+
+    [Header("GameFinishPanel")]
+    [SerializeField] GameObject GameFinishPanel;
 
     public event EventHandler OnHitActiveCount;
     public event EventHandler OnScoreActiveCount;
@@ -38,6 +61,10 @@ public class CountManager : MonoBehaviour
     {
         scoreCount = PlayerPrefs.GetInt("Score");
         ResetHitCount();
+
+        levelPrefs = nextLevelSelector.ToString();
+
+        StartTextsUpdate();
     }
 
     // Update is called once per frame
@@ -49,9 +76,14 @@ public class CountManager : MonoBehaviour
     public void GameTimer() {
         timer -= Time.deltaTime * timeSpeed;
         float timeMinutes = ((float)(timer / 60)) % 60;
+
+        if(timer <= 10) {
+            TimeText.color = Color.red;
+        }
         if(timer <= 0) {
             timer = 0;
             Debug.Log("GameOver");
+            GameFinishPanel.SetActive(true);
         }
 
         TimeText.text = timeMinutes.ToString("0.00");
@@ -87,8 +119,32 @@ public class CountManager : MonoBehaviour
             OnLowScoreFX?.Invoke(this, EventArgs.Empty);
         }
 
-        ScoreCountText.text = scoreCount.ToString();
+        ScoreCountText.text = scoreCount.ToString() + "/" + winLevelScore.ToString();
         ScoreCountTextBack.text = ScoreCountText.text;
         OnScoreActiveCount?.Invoke(this, EventArgs.Empty);
+
+        UpdateScoreCountText.text = ScoreCountText.text;
+        UpdateScoreCountTextBack.text = ScoreCountText.text;
+
+        if(scoreCount >= winLevelScore) {
+            PlayerPrefs.SetInt(levelPrefs, 1);
+        }
+
+        BestPlayerResultSet();
+    }
+
+    public void StartTextsUpdate() {
+        ScoreCountText.text = scoreCount.ToString() + "/" + winLevelScore.ToString();
+        ScoreCountTextBack.text = ScoreCountText.text;
+        UpdateScoreCountText.text = ScoreCountText.text;
+        UpdateScoreCountTextBack.text = ScoreCountText.text;
+    }
+
+    public void BestPlayerResultSet() {
+        int bestResult = PlayerPrefs.GetInt("BestResult");
+        if (scoreCount > bestResult)
+            PlayerPrefs.SetInt("BestResult", scoreCount);
+
+
     }
 }

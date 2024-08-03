@@ -23,6 +23,11 @@ public class MenuSceneController : MonoBehaviour
     [SerializeField] bool isMainMenuScene;
     [SerializeField] bool isStartLoadScene;
 
+    [Space]
+
+    [SerializeField] private Text bestResultText;
+    [SerializeField] private Text bestResultTextBack;
+
 
     void Start()
     {
@@ -36,11 +41,14 @@ public class MenuSceneController : MonoBehaviour
         {
             StartCoroutine("StartLoaderAsync");
         }
-        
-    }
-    public void OpenQuickChallengeMenu()
-    {
 
+        BestPlayerResultStartUpdate();
+
+
+    }
+    public void OpenQuickChallengeMenu(int scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
     public void QuitGame()
@@ -93,4 +101,23 @@ public class MenuSceneController : MonoBehaviour
         loadBackground.enabled = false;
     }
 
+
+    public void BestPlayerResultStartUpdate() {
+        if (bestResultText ) {
+            int value = PlayerPrefs.GetInt("BestResult");
+
+            if (value > 1) {
+                bestResultText.text = "RECORD: " + value.ToString();
+                bestResultTextBack.text = bestResultText.text;
+                bestResultText.enabled = true;
+                bestResultTextBack.enabled = true;
+
+            }
+            else {
+                bestResultTextBack.enabled = false;
+                bestResultText.enabled = false;
+            }
+        }
+        
+    }
 }

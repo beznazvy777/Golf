@@ -82,7 +82,7 @@ public class LevelSelectionController : MonoBehaviour
     }
 
     void StartLevelUIConfig() {
-        PlayerPrefs.SetInt("Level2", 0);
+        
         Level_1_Active.SetActive(true);
 
         int l2 = PlayerPrefs.GetInt("Level2");
