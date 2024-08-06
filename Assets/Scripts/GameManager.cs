@@ -8,15 +8,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CameraController cameraController;
 
     private GameObject currentBall;
-    private Vector3 lastKickStartPosition;
+    private Vector3 spawnPositionTransform;
+    [SerializeField] private GameObject spawnPosition;
 
     public bool playerWin;
     public bool playerLoseBall;
 
     private void Start()
     {
+        spawnPositionTransform = spawnPosition.transform.position;
         // Initially spawn the ball at the origin
-        SpawnNewBall(Vector3.zero);
+        SpawnNewBall(spawnPositionTransform);
     }
 
     private void Update()
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
         // If there is no current ball, spawn a new one at the last kick start position
         if (currentBall == null)
         {
-            SpawnNewBall(lastKickStartPosition);
+            SpawnNewBall(spawnPositionTransform);
 
         }
 
@@ -40,9 +42,9 @@ public class GameManager : MonoBehaviour
         if (currentBall != null)
         {
             BallController ballController = currentBall.GetComponent<BallController>();
-            if (!ballController.IsStationary && lastKickStartPosition == Vector3.zero)
+            if (!ballController.IsStationary && spawnPositionTransform == spawnPosition.transform.position)
             {
-                lastKickStartPosition = currentBall.transform.position;
+                spawnPositionTransform = currentBall.transform.position;
             }
         }
     }
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
         cameraController.SetNewBall(currentBall.transform);
 
         // Reset the last kick start position when a new ball is spawned
-        lastKickStartPosition = Vector3.zero;
+        spawnPositionTransform = spawnPosition.transform.position;
     }
 
     public IEnumerator DestroyBallInHole() {

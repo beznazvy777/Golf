@@ -12,9 +12,11 @@ public class CameraController : MonoBehaviour
     private BallController ballController;
     private bool shouldFollowBall = true;
 
+    [SerializeField] Animator cameraAnimator;
     private void Start()
     {
         ballController = ballTransform.GetComponent<BallController>();
+        //FollowBall();
     }
 
     private void LateUpdate()
