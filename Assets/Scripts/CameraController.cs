@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         ballController = ballTransform.GetComponent<BallController>();
+        cameraAnimator = GetComponent<Animator>();
         //FollowBall();
     }
 
@@ -60,6 +61,8 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            if (cameraAnimator.enabled) { cameraAnimator.enabled = false; }
+
             float horizontalInput = Input.GetAxis("Mouse X") * rotationSensitivity * Time.deltaTime;
             float verticalInput = Input.GetAxis("Mouse Y") * rotationSensitivity * Time.deltaTime;
 

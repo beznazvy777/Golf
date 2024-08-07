@@ -13,6 +13,11 @@ public class BallController : MonoBehaviour
     private bool isPreparingToShoot;
     private Rigidbody ballRigidbody;
 
+    private Vector3 windDirection;
+    private float windForce;
+    
+
+    
     // Other existing variables and methods
 
     private Vector3 startPosition;
@@ -24,6 +29,9 @@ public class BallController : MonoBehaviour
         ballRigidbody = GetComponent<Rigidbody>();
         isPreparingToShoot = false;
         aimLineRenderer.enabled = false;
+
+        windDirection = WindExposureManager.instance.windMoveDirection;
+        windForce = WindExposureManager.instance.windSpeed;
     }
 
     private void FixedUpdate()
@@ -85,6 +93,7 @@ public class BallController : MonoBehaviour
         // Apply vertical bounce force
         ballRigidbody.AddForce(Vector3.up * bounceForce * power/10, ForceMode.Impulse);
 
+        WindDirection(windDirection, windForce);
         isStationary = false;
     }
 
@@ -149,9 +158,40 @@ public class BallController : MonoBehaviour
         if (other.GetComponent<HoleManager>()) {
             other.GetComponent<HoleManager>().BallInHole();
         }
+
+        if(other.gameObject.tag == "Sand")
+        {
+            var lforce = launchForce;
+            var bforce = bounceForce;
+
+            launchForce = lforce / 2;
+            bounceForce = bforce / 2;
+        }
+
+        if(other.gameObject.tag == "Water") {
+
+            var ballWeight = 0.5f;
+            var ballForce = 0f;
+            Debug.Log("Ball in water");
+
+        }
     }
 
 
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Sand")
+        {
+            var lforce = launchForce;
+            var bforce = bounceForce;
 
+            launchForce = lforce * 2;
+            bounceForce = bforce * 2;
+        }
+    }
 
+    public void WindDirection(Vector3 direction, float windForce)
+    {
+        ballRigidbody.AddForce(direction * windForce, ForceMode.Impulse);
+    }
 }
