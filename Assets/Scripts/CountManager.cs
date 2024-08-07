@@ -49,6 +49,8 @@ public class CountManager : MonoBehaviour
 
     [Header("GameFinishPanel")]
     [SerializeField] GameObject GameFinishPanel;
+    [SerializeField] GameObject LevelCompleteFX;
+    private bool isLevelComplete;
 
     public event EventHandler OnHitActiveCount;
     public event EventHandler OnScoreActiveCount;
@@ -59,6 +61,7 @@ public class CountManager : MonoBehaviour
 
     void Start()
     {
+        isLevelComplete = false;
         scoreCount = PlayerPrefs.GetInt("Score");
         ResetHitCount();
 
@@ -128,6 +131,10 @@ public class CountManager : MonoBehaviour
 
         if(scoreCount >= winLevelScore) {
             PlayerPrefs.SetInt(levelPrefs, 1);
+            if (!isLevelComplete) {
+                Instantiate(LevelCompleteFX, transform.position, Quaternion.identity);
+                isLevelComplete = true;
+            }
         }
 
         BestPlayerResultSet();

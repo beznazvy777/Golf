@@ -59,9 +59,13 @@ public class CameraController : MonoBehaviour
 
     private void RotateAroundBall()
     {
+        if (Input.GetMouseButtonDown(0) && cameraAnimator.enabled) {
+             cameraAnimator.enabled = false; 
+        }
+
         if (Input.GetMouseButton(0))
         {
-            if (cameraAnimator.enabled) { cameraAnimator.enabled = false; }
+            
 
             float horizontalInput = Input.GetAxis("Mouse X") * rotationSensitivity * Time.deltaTime;
             float verticalInput = Input.GetAxis("Mouse Y") * rotationSensitivity * Time.deltaTime;

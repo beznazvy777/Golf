@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.228
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.3575723, g: 0.45695955, b: 0.51386696, a: 0.228}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0.228}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15654,6 +15654,7 @@ MonoBehaviour:
   mediumHitScore: 75
   lowHitScore: 30
   GameFinishPanel: {fileID: 591859947}
+  LevelCompleteFX: {fileID: 5768038619566329727, guid: 04e13db36d576834d82c5b8b6721dae2, type: 3}
 --- !u!114 &1731792863
 MonoBehaviour:
   m_ObjectHideFlags: 0
