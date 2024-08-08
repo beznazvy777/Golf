@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+//using UnityEngine.UIElements;
 
 public class LevelSelectionController : MonoBehaviour
 {
     [SerializeField] List<Image> WhiteLevelSelector = new List<Image>();
-
+    [SerializeField] GameObject LoaderCanvas;
+    [SerializeField] Slider slider;
     public int loadLevel;
 
     [Header("Level UI Tools")]
@@ -51,17 +53,22 @@ public class LevelSelectionController : MonoBehaviour
 
     void Awake()
     {
+        LoaderCanvas.SetActive(false);
         StartLevelUIConfig();
     }
     public void LoadSelectLevel()
     {
-        SceneManager.LoadScene(loadLevel);
+        LoaderCanvas.SetActive(true);
+        StartCoroutine("LoadProgressAsync");
     }
 
     public void SetLevel(int level)
-    {
+    {   
+
         StartCoroutine("WhiteSelectorDisable");
+        
         loadLevel = level;
+        
     }
 
     public void LoadLevelOnNumber(int levelNumber)
@@ -177,5 +184,18 @@ public class LevelSelectionController : MonoBehaviour
         }
 
      
+    }
+
+    public IEnumerator LoadProgressAsync() {
+        
+        AsyncOperation loadingProgress = SceneManager.LoadSceneAsync(loadLevel);
+
+        while (!loadingProgress.isDone) {
+            float progress = Mathf.Clamp01(loadingProgress.progress / 0.9f);
+            if (progress > slider.value)
+                slider.value = progress;
+
+            yield return null;
+        }
     }
 }
