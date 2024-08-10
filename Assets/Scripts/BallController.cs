@@ -22,6 +22,7 @@ public class BallController : MonoBehaviour
 
     private Vector3 startPosition;
     private CountManager countManager;
+    private Vector3 launchDir;
     private void Start()
     {
         countManager = FindObjectOfType<CountManager>();
@@ -86,7 +87,8 @@ public class BallController : MonoBehaviour
         Vector3 horizontalTargetPoint = new Vector3(targetPoint.x, transform.position.y, targetPoint.z);
         Vector3 launchDirection = (horizontalTargetPoint - transform.position).normalized;
         float power = Vector3.Distance(transform.position, horizontalTargetPoint);
-
+        
+        launchDir = launchDirection;
         // Apply horizontal launch force
         ballRigidbody.AddForce(launchDirection * power * launchForce);
         
@@ -175,6 +177,12 @@ public class BallController : MonoBehaviour
             Debug.Log("Ball in water");
 
         }
+
+        if(other.gameObject.tag == "SpeedUpBlock") {
+
+            ballRigidbody.AddForce(launchDir * 15 * launchForce);
+            ballRigidbody.AddForce(Vector3.up * bounceForce * 15 / 10, ForceMode.Impulse);
+        }
     }
 
 
@@ -193,5 +201,6 @@ public class BallController : MonoBehaviour
     public void WindDirection(Vector3 direction, float windForce)
     {
         ballRigidbody.AddForce(direction * windForce, ForceMode.Impulse);
+
     }
 }

@@ -12,8 +12,8 @@ public class SmoothMover : MonoBehaviour
     public float speed = 2.0f;
 
     // Axis along which the object will move (X or Y)
-    public enum Axis { X, Y }
-    public Axis moveAxis = Axis.X;
+    public enum Axis { Z, Y }
+    public Axis moveAxis = Axis.Z;
 
     // Reference to the Rigidbody component
     private Rigidbody rb;
@@ -55,13 +55,13 @@ public class SmoothMover : MonoBehaviour
         }
 
         // Clamp the movement to the specified axis
-        if (moveAxis == Axis.X)
+        if (moveAxis == Axis.Z)
         {
             rb.MovePosition(new Vector3(transform.position.x, pointA.y, transform.position.z));
         }
         else if (moveAxis == Axis.Y)
         {
-            rb.MovePosition(new Vector3(pointA.x, transform.position.y, transform.position.z));
+            rb.MovePosition(new Vector3(transform.position.x, transform.position.y, pointA.z));
         }
     }
 }

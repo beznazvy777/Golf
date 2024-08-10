@@ -12227,7 +12227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2548029453649507789}
   m_Layer: 0
-  m_Name: Plants With Hole
+  m_Name: Field With Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
