@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     private GameObject currentBall;
     private Vector3 spawnPositionTransform;
     [SerializeField] private GameObject spawnPosition;
-
+    [SerializeField] private float dropPoint;
+    [Space]
     public bool playerWin;
     public bool playerLoseBall;
 
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         // Check if the current ball has fallen off the ground
-        if (currentBall != null && currentBall.transform.position.y < -10)
+        if (currentBall != null && currentBall.transform.position.y < dropPoint)
         {
             
             Destroy(currentBall);

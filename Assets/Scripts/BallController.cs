@@ -9,6 +9,9 @@ public class BallController : MonoBehaviour
     [SerializeField] private float idleVelocityThreshold = .05f;
     [SerializeField] private LineRenderer aimLineRenderer;
 
+    [Space]
+    [SerializeField] AudioSource hitSound;
+
     private bool isStationary;
     private bool isPreparingToShoot;
     private Rigidbody ballRigidbody;
@@ -73,6 +76,7 @@ public class BallController : MonoBehaviour
         {
             LaunchBall(targetPoint.Value);
             countManager.HitCount();
+            hitSound.Play();
         }
     }
 
