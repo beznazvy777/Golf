@@ -7,10 +7,12 @@ public class BallController : MonoBehaviour
     [SerializeField] private float launchForce;
     [SerializeField] private float bounceForce;
     [SerializeField] private float idleVelocityThreshold = .05f;
+    [SerializeField] private float speedUpJumpPower;
     [SerializeField] private LineRenderer aimLineRenderer;
 
     [Space]
     [SerializeField] AudioSource hitSound;
+    [SerializeField] AudioSource jumpSound;
 
     private bool isStationary;
     private bool isPreparingToShoot;
@@ -184,8 +186,9 @@ public class BallController : MonoBehaviour
 
         if(other.gameObject.tag == "SpeedUpBlock") {
 
-            ballRigidbody.AddForce(launchDir * 15 * launchForce);
-            ballRigidbody.AddForce(Vector3.up * bounceForce * 15 / 10, ForceMode.Impulse);
+            ballRigidbody.AddForce(launchDir * speedUpJumpPower * launchForce);
+            ballRigidbody.AddForce(Vector3.up * bounceForce * speedUpJumpPower / 10, ForceMode.Impulse);
+            jumpSound.Play();
         }
     }
 
