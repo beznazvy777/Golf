@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.228
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.35759732, g: 0.4569745, b: 0.5138527, a: 0.228}
+  m_IndirectSpecularColor: {r: 0.3575723, g: 0.45695955, b: 0.51386696, a: 0.228}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1033,11 +1033,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207096470}
   m_CullTransparentMesh: 1
---- !u!4 &277601889 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6454907830005205698, guid: 675a01f9df26e4a48a32e04e5c39ca8c, type: 3}
-  m_PrefabInstance: {fileID: 1364937758840986676}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &284843697
 GameObject:
   m_ObjectHideFlags: 0
@@ -4554,7 +4549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804a4f9d4cb340d4bac4fd0bbc9d48d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballTransform: {fileID: 277601889}
+  ballTransform: {fileID: 1364937758840986677}
   offset: {x: 10, y: 10, z: 10}
   followSpeed: 1
   rotationSensitivity: 100
@@ -16928,6 +16923,8 @@ MonoBehaviour:
   hitCount: 0
   scoreCount: 0
   winLevelScore: 300
+  bestResultHit: 1
+  normalResultHit: 3
   maxHitScore: 150
   mediumHitScore: 75
   lowHitScore: 30
@@ -19274,6 +19271,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 675a01f9df26e4a48a32e04e5c39ca8c, type: 3}
+--- !u!4 &1364937758840986677 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6454907830005205698, guid: 675a01f9df26e4a48a32e04e5c39ca8c, type: 3}
+  m_PrefabInstance: {fileID: 1364937758840986676}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1843694427085906751
 PrefabInstance:
   m_ObjectHideFlags: 0

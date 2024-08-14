@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Vector3 offset;
     [SerializeField] private float followSpeed = 5f;
     [SerializeField] private float rotationSensitivity = 100f;
+    [SerializeField] private float stopFollowPointY;
 
     private BallController ballController;
     private bool shouldFollowBall = true;
@@ -27,7 +28,7 @@ public class CameraController : MonoBehaviour
 
 
         if (ballTransform) {
-            if (ballTransform.position.y < -1) {
+            if (ballTransform.position.y < stopFollowPointY) {
                 shouldFollowBall = false;
                 return;
             }

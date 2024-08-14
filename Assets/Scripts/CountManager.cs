@@ -40,7 +40,12 @@ public class CountManager : MonoBehaviour
     public float hitCount;
     public int scoreCount;
     public int winLevelScore;
-    private string levelPrefs; 
+    private string levelPrefs;
+
+    [Space]
+    [SerializeField] float bestResultHit;
+    [SerializeField] float normalResultHit;
+    
 
     [Header("Score/Values")]
     [SerializeField] int maxHitScore;
@@ -109,15 +114,15 @@ public class CountManager : MonoBehaviour
     public void ScoreCounter() {
 
 
-        if(hitCount <= 1) {
+        if(hitCount <= bestResultHit) {
             scoreCount += maxHitScore;
             OnMaxScoreFX?.Invoke(this, EventArgs.Empty);
         }
-        if (hitCount >1 && hitCount <= 3) {
+        if (hitCount >bestResultHit && hitCount <= normalResultHit) {
             scoreCount += mediumHitScore;
             OnMediumScoreFX?.Invoke(this, EventArgs.Empty);
         }
-        if (hitCount > 3) {
+        if (hitCount > normalResultHit) {
             scoreCount += lowHitScore;
             OnLowScoreFX?.Invoke(this, EventArgs.Empty);
         }
