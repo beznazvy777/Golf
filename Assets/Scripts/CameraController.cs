@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float stopFollowPointY;
 
     private BallController ballController;
-    private bool shouldFollowBall = true;
+    [SerializeField] private bool shouldFollowBall = true;
 
     public bool ballInMovePlatform;
 
@@ -22,6 +22,8 @@ public class CameraController : MonoBehaviour
         cameraAnimator = GetComponent<Animator>();
         //FollowBall();
     }
+
+    
 
     private void LateUpdate()
     {
@@ -40,6 +42,7 @@ public class CameraController : MonoBehaviour
             if (!ballController.IsStationary)
             {
                 FollowBall();
+                Debug.Log("Follow");
             }
             
             if (!ballController.IsPreparingToShoot && ballController.IsStationary && !ballInMovePlatform)
@@ -58,7 +61,10 @@ public class CameraController : MonoBehaviour
         }
     }
 
-   
+    private void OnMouseDown() {
+        //FollowBallInMovePlatform();
+       // RotateAroundBall();
+    }
 
     private void FollowBall()
     {
@@ -134,7 +140,7 @@ public class CameraController : MonoBehaviour
                 transform.position = ballTransform.position + (transform.position - ballTransform.position).normalized * offset.magnitude;
                 transform.LookAt(ballTransform);
             }
-
+             //--
             //if (ballInMovePlatform) {
             //    float horizontalInput = Input.GetAxis("Mouse X") * rotationSensitivity * Time.deltaTime;
             //    float verticalInput = Input.GetAxis("Mouse Y") * rotationSensitivity * Time.deltaTime;
@@ -145,7 +151,7 @@ public class CameraController : MonoBehaviour
             //    transform.position = ballTransform.position + (transform.position - ballTransform.position).normalized * offset.magnitude;
             //    transform.LookAt(ballTransform);
             //}
-            
+            //--
         }
     }
 

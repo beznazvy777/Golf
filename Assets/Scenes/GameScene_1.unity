@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.228
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.3575723, g: 0.45695955, b: 0.51386696, a: 0.228}
+  m_IndirectSpecularColor: {r: 0.35759732, g: 0.4569745, b: 0.5138527, a: 0.228}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4554,8 +4554,9 @@ MonoBehaviour:
   followSpeed: 1
   rotationSensitivity: 100
   stopFollowPointY: -1
+  shouldFollowBall: 1
   ballInMovePlatform: 0
-  cameraAnimator: {fileID: 0}
+  cameraAnimator: {fileID: 963194231}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0

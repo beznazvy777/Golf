@@ -14,13 +14,13 @@ public class BallController : MonoBehaviour
     [SerializeField] AudioSource hitSound;
     [SerializeField] AudioSource jumpSound;
 
-    private bool isStationary;
-    private bool isPreparingToShoot;
+    [SerializeField] private bool isStationary;
+    [SerializeField] private bool isPreparingToShoot;
     private Rigidbody ballRigidbody;
 
     private Vector3 windDirection;
     private float windForce;
-    
+    private Vector3 worldPointPos;
 
     
     // Other existing variables and methods
@@ -58,6 +58,12 @@ public class BallController : MonoBehaviour
         }
     }
 
+    private void OnMouseUp() {
+        LaunchBall(worldPointPos);
+        countManager.HitCount();
+        hitSound.Play();
+    }
+
     private void HandleAiming()
     {
         if (!isPreparingToShoot || !isStationary)
@@ -67,6 +73,12 @@ public class BallController : MonoBehaviour
 
         Vector3? targetPoint = GetMouseWorldPosition();
 
+        if (targetPoint.Value != null) {
+            worldPointPos = targetPoint.Value;
+        }
+       
+        
+
         if (!targetPoint.HasValue)
         {
             return;
@@ -74,12 +86,13 @@ public class BallController : MonoBehaviour
 
         RenderAimLine(targetPoint.Value);
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            LaunchBall(targetPoint.Value);
-            countManager.HitCount();
-            hitSound.Play();
-        }
+
+        //if (Input.GetMouseButtonUp(0))
+        //{
+        //    LaunchBall(worldPointPos);
+        //    countManager.HitCount();
+        //    hitSound.Play();
+        //}
     }
 
     private void LaunchBall(Vector3 targetPoint)
@@ -115,27 +128,60 @@ public class BallController : MonoBehaviour
         aimLineRenderer.enabled = true;
     }
 
-    private Vector3? GetMouseWorldPosition()
-    {
-        Vector3 mousePosFar = new Vector3(
-            Input.mousePosition.x,
-            Input.mousePosition.y,
-            Camera.main.farClipPlane);
-        Vector3 mousePosNear = new Vector3(
-            Input.mousePosition.x,
-            Input.mousePosition.y,
-            Camera.main.nearClipPlane);
-        Vector3 worldPosFar = Camera.main.ScreenToWorldPoint(mousePosFar);
-        Vector3 worldPosNear = Camera.main.ScreenToWorldPoint(mousePosNear);
-        RaycastHit hit;
-        if (Physics.Raycast(worldPosNear, worldPosFar - worldPosNear, out hit, float.PositiveInfinity))
-        {
-            return hit.point;
+    //private Vector3? GetMouseWorldPosition()
+    //{
+    //    Vector3 mousePosFar = new Vector3(
+    //        Input.mousePosition.x,
+    //        Input.mousePosition.y,
+    //        Camera.main.farClipPlane);
+    //    Vector3 mousePosNear = new Vector3(
+    //        Input.mousePosition.x,
+    //        Input.mousePosition.y,
+    //        Camera.main.nearClipPlane);
+    //    Vector3 worldPosFar = Camera.main.ScreenToWorldPoint(mousePosFar);
+    //    Vector3 worldPosNear = Camera.main.ScreenToWorldPoint(mousePosNear);
+        
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(worldPosNear, worldPosFar - worldPosNear, out hit, float.PositiveInfinity))
+    //    {
+    //        return hit.point;
+    //    }
+    //    else
+    //    {
+    //        return null;
+    //    }
+    //}
+
+    public Vector3? GetMouseWorldPosition() {
+        // Get the mouse position in screen coordinates
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = Camera.main.nearClipPlane; // Set the distance from the camera
+
+        // Convert the mouse position to world coordinates for the near plane
+        Vector3 worldPosNear = Camera.main.ScreenToWorldPoint(mousePos);
+
+        // Set the distance to the far plane
+        mousePos.z = Camera.main.farClipPlane;
+
+        // Convert the mouse position to world coordinates for the far plane
+        Vector3 worldPosFar = Camera.main.ScreenToWorldPoint(mousePos);
+
+        // Create a ray from the near plane to the far plane
+        Vector3 rayDirection = worldPosFar - worldPosNear;
+        Ray ray = new Ray(worldPosNear, rayDirection);
+
+        // Define the plane you want to intersect with the ray
+        // Here, we use a plane at the y = 0 position for simplicity
+        Plane plane = new Plane(Vector3.up, Vector3.zero);
+
+        // Calculate the intersection point
+        float distance;
+        if (plane.Raycast(ray, out distance)) {
+            return ray.GetPoint(distance);
         }
-        else
-        {
-            return null;
-        }
+
+        // If no intersection, return null
+        return null;
     }
 
     private void BecomeIdle()
