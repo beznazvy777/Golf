@@ -5549,8 +5549,9 @@ MonoBehaviour:
   ballTransform: {fileID: 277601889}
   offset: {x: 10, y: 10, z: 10}
   followSpeed: 1
-  rotationSensitivity: 100
+  rotationSensitivity: 3
   stopFollowPointY: -1
+  shouldFollowBall: 1
   ballInMovePlatform: 0
   cameraAnimator: {fileID: 0}
 --- !u!114 &963194230

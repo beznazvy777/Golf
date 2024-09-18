@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour
 
     public bool ballInMovePlatform;
 
+    private Vector3 touchPosition;
     [SerializeField] Animator cameraAnimator;
     private void Start()
     {
@@ -27,7 +28,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-
+        
 
         if (ballTransform) {
             if (ballTransform.position.y < stopFollowPointY) {
@@ -63,16 +64,19 @@ public class CameraController : MonoBehaviour
 
     private void OnMouseDown() {
         //Camera start tutorial turn off
-        if (Input.GetMouseButtonDown(0) && cameraAnimator.enabled)
-        {
-            cameraAnimator.enabled = false;
-        }
+        //if (/*Input.GetMouseButtonDown(0) &&*/ cameraAnimator.enabled)
+        //{
+          //cameraAnimator.enabled = false;
+        //}
+        //Debug.Log("Tap");
     }
+
+    
 
     private void OnMouseDrag()
     {
-        TapFollowBallInMovingPlatform();
-        RotateAroundBall();
+        //TapFollowBallInMovingPlatform();
+        //RotateAroundBall();
 
     }
 
@@ -162,23 +166,25 @@ public class CameraController : MonoBehaviour
     }
     private void RotateAroundBall()
     {
-        //if (Input.GetMouseButtonDown(0) && cameraAnimator.enabled) {
-        //     cameraAnimator.enabled = false; 
-        //}
+        if (Input.GetMouseButtonDown(0) && cameraAnimator.enabled) {
+             cameraAnimator.enabled = false; 
+        }
 
-        //if (Input.GetMouseButton(0))
-        //{
+        if (Input.GetMouseButton(0))
+        {
+            
+                if (!ballInMovePlatform) {
+                    float horizontalInput = Input.GetAxis("Mouse X") * rotationSensitivity * Time.deltaTime;
+                    float verticalInput = Input.GetAxis("Mouse Y") * rotationSensitivity * Time.deltaTime;
 
-            if (!ballInMovePlatform) {
-                float horizontalInput = Input.GetAxis("Mouse X") * rotationSensitivity * Time.deltaTime;
-                float verticalInput = Input.GetAxis("Mouse Y") * rotationSensitivity * Time.deltaTime;
+                    transform.RotateAround(ballTransform.position, Vector3.up, horizontalInput);
+                    transform.RotateAround(ballTransform.position, transform.right, -verticalInput);
 
-                transform.RotateAround(ballTransform.position, Vector3.up, horizontalInput);
-                transform.RotateAround(ballTransform.position, transform.right, -verticalInput);
-
-                transform.position = ballTransform.position + (transform.position - ballTransform.position).normalized * offset.magnitude;
-                transform.LookAt(ballTransform);
-            }
+                    transform.position = ballTransform.position + (transform.position - ballTransform.position).normalized * offset.magnitude;
+                    transform.LookAt(ballTransform);
+                }
+            
+            
              //--
             //if (ballInMovePlatform) {
             //    float horizontalInput = Input.GetAxis("Mouse X") * rotationSensitivity * Time.deltaTime;
@@ -191,7 +197,21 @@ public class CameraController : MonoBehaviour
             //    transform.LookAt(ballTransform);
             //}
             //--
-        //}
+        }
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) {
+            if (!ballInMovePlatform) {
+                Touch touch = Input.GetTouch(0);
+
+                float horizontalInput = touch.deltaPosition.x * rotationSensitivity * Time.deltaTime;
+                float verticalInput = touch.deltaPosition.y * rotationSensitivity * Time.deltaTime;
+
+                transform.RotateAround(ballTransform.position, Vector3.up, horizontalInput);
+                transform.RotateAround(ballTransform.position, transform.right, -verticalInput);
+
+                transform.position = ballTransform.position + (transform.position - ballTransform.position).normalized * offset.magnitude;
+                transform.LookAt(ballTransform);
+            }
+        }
     }
 
     public void SetNewBall(Transform newBallTransform)

@@ -2594,7 +2594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &614339314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4552,7 +4552,7 @@ MonoBehaviour:
   ballTransform: {fileID: 1364937758840986677}
   offset: {x: 10, y: 10, z: 10}
   followSpeed: 1
-  rotationSensitivity: 100
+  rotationSensitivity: 3
   stopFollowPointY: -1
   shouldFollowBall: 1
   ballInMovePlatform: 0

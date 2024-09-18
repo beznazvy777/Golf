@@ -55,14 +55,14 @@ public class BallController : MonoBehaviour
         if (isStationary)
         {
             isPreparingToShoot = true;
-            isStationary = false;
+            //isStationary = false;
         }
     }
 
     private void OnMouseUp() {
-        LaunchBall(worldPointPos);
-        countManager.HitCount();
-        hitSound.Play();
+       // LaunchBall(worldPointPos);
+        //countManager.HitCount();
+       // hitSound.Play();
     }
 
     private void HandleAiming()
@@ -73,6 +73,7 @@ public class BallController : MonoBehaviour
         }
 
         Vector3? targetPoint = GetMouseWorldPosition();
+        Vector3? renderLinePoint = GetMouseRenderWorldPosition();
 
         if (targetPoint.Value != null) {
             worldPointPos = targetPoint.Value;
@@ -80,20 +81,24 @@ public class BallController : MonoBehaviour
        
         
 
-        if (!targetPoint.HasValue)
-        {
+        
+
+        if (!renderLinePoint.HasValue) {
             return;
         }
 
-        RenderAimLine(targetPoint.Value);
+        RenderAimLine(renderLinePoint.Value);
 
+        if (!targetPoint.HasValue) {
+            return;
+        }
 
-        //if (Input.GetMouseButtonUp(0))
-        //{
-            //LaunchBall(worldPointPos);
-           //countManager.HitCount();
-            //hitSound.Play();
-        //}
+        if (Input.GetMouseButtonUp(0))
+        {
+            LaunchBall(renderLinePoint.Value);
+           countManager.HitCount();
+            hitSound.Play();
+        }
     }
 
     private void LaunchBall(Vector3 targetPoint)
@@ -129,29 +134,26 @@ public class BallController : MonoBehaviour
         aimLineRenderer.enabled = true;
     }
 
-    //private Vector3? GetMouseWorldPosition()
-    //{
-    //    Vector3 mousePosFar = new Vector3(
-    //        Input.mousePosition.x,
-    //        Input.mousePosition.y,
-    //        Camera.main.farClipPlane);
-    //    Vector3 mousePosNear = new Vector3(
-    //        Input.mousePosition.x,
-    //        Input.mousePosition.y,
-    //        Camera.main.nearClipPlane);
-    //    Vector3 worldPosFar = Camera.main.ScreenToWorldPoint(mousePosFar);
-    //    Vector3 worldPosNear = Camera.main.ScreenToWorldPoint(mousePosNear);
-        
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(worldPosNear, worldPosFar - worldPosNear, out hit, float.PositiveInfinity))
-    //    {
-    //        return hit.point;
-    //    }
-    //    else
-    //    {
-    //        return null;
-    //    }
-    //}
+    private Vector3? GetMouseRenderWorldPosition() {
+        Vector3 mousePosFar = new Vector3(
+            Input.mousePosition.x,
+            Input.mousePosition.y,
+            Camera.main.farClipPlane);
+        Vector3 mousePosNear = new Vector3(
+            Input.mousePosition.x,
+            Input.mousePosition.y,
+            Camera.main.nearClipPlane);
+        Vector3 worldPosFar = Camera.main.ScreenToWorldPoint(mousePosFar);
+        Vector3 worldPosNear = Camera.main.ScreenToWorldPoint(mousePosNear);
+
+        RaycastHit hit;
+        if (Physics.Raycast(worldPosNear, worldPosFar - worldPosNear, out hit, float.PositiveInfinity)) {
+            return hit.point;
+        }
+        else {
+            return null;
+        }
+    }
 
     public Vector3? GetMouseWorldPosition() {
         // Get the mouse position in screen coordinates
