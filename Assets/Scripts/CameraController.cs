@@ -62,8 +62,18 @@ public class CameraController : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        //FollowBallInMovePlatform();
-       // RotateAroundBall();
+        //Camera start tutorial turn off
+        if (Input.GetMouseButtonDown(0) && cameraAnimator.enabled)
+        {
+            cameraAnimator.enabled = false;
+        }
+    }
+
+    private void OnMouseDrag()
+    {
+        TapFollowBallInMovingPlatform();
+        RotateAroundBall();
+
     }
 
     private void FollowBall()
@@ -121,14 +131,43 @@ public class CameraController : MonoBehaviour
 
     }
 
+
+    private void TapFollowBallInMovingPlatform()
+    {
+        if (ballInMovePlatform)
+        {
+            if (!ballController.IsPreparingToShoot)
+            {
+                float horizontalInput = Input.GetAxis("Mouse X") * rotationSensitivity * Time.deltaTime;
+                float verticalInput = Input.GetAxis("Mouse Y") * rotationSensitivity * Time.deltaTime;
+
+                transform.RotateAround(ballTransform.position, Vector3.up, horizontalInput);
+                transform.RotateAround(ballTransform.position, transform.right, -verticalInput);
+
+                transform.position = ballTransform.position + (transform.position - ballTransform.position).normalized * offset.magnitude;
+                transform.LookAt(ballTransform);
+            }
+            if (ballController.IsPreparingToShoot)
+            {
+                float horizontalInput = Input.GetAxis("Mouse X") * rotationSensitivity * Time.deltaTime;
+
+                transform.RotateAround(ballTransform.position, Vector3.up, horizontalInput);
+
+                transform.position = ballTransform.position + (transform.position - ballTransform.position).normalized * offset.magnitude;
+                transform.LookAt(ballTransform);
+            }
+
+
+        }
+    }
     private void RotateAroundBall()
     {
-        if (Input.GetMouseButtonDown(0) && cameraAnimator.enabled) {
-             cameraAnimator.enabled = false; 
-        }
+        //if (Input.GetMouseButtonDown(0) && cameraAnimator.enabled) {
+        //     cameraAnimator.enabled = false; 
+        //}
 
-        if (Input.GetMouseButton(0))
-        {
+        //if (Input.GetMouseButton(0))
+        //{
 
             if (!ballInMovePlatform) {
                 float horizontalInput = Input.GetAxis("Mouse X") * rotationSensitivity * Time.deltaTime;
@@ -152,7 +191,7 @@ public class CameraController : MonoBehaviour
             //    transform.LookAt(ballTransform);
             //}
             //--
-        }
+        //}
     }
 
     public void SetNewBall(Transform newBallTransform)

@@ -55,6 +55,7 @@ public class BallController : MonoBehaviour
         if (isStationary)
         {
             isPreparingToShoot = true;
+            isStationary = false;
         }
     }
 
@@ -89,9 +90,9 @@ public class BallController : MonoBehaviour
 
         //if (Input.GetMouseButtonUp(0))
         //{
-        //    LaunchBall(worldPointPos);
-        //    countManager.HitCount();
-        //    hitSound.Play();
+            //LaunchBall(worldPointPos);
+           //countManager.HitCount();
+            //hitSound.Play();
         //}
     }
 
