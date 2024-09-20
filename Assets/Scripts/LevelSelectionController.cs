@@ -66,8 +66,16 @@ public class LevelSelectionController : MonoBehaviour
     {   
 
         StartCoroutine("WhiteSelectorDisable");
+        int value = PlayerPrefs.GetInt("FirstEnter");
+        if (level == 3 && value == 0)
+        {
+            loadLevel = 12;
+        }
+        else
+        {
+            loadLevel = level;
+        }
         
-        loadLevel = level;
         
     }
 
@@ -198,4 +206,6 @@ public class LevelSelectionController : MonoBehaviour
             yield return null;
         }
     }
+
+    
 }

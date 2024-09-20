@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
-    
+    void Awake()
+    {
+        PlayerPrefs.SetInt("FirstEnter", 1);
+    }
     void Start()
     {
 

@@ -71,7 +71,7 @@ public class CountManager : MonoBehaviour
         ResetHitCount();
 
         levelPrefs = nextLevelSelector.ToString();
-
+        
         StartTextsUpdate();
     }
 
