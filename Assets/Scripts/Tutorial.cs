@@ -8,7 +8,9 @@ public class Tutorial : MonoBehaviour
     
     void Start()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildByIndex+1);
+
+        SceneManager.LoadScene(3);
+
     }
 
     
