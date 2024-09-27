@@ -122,6 +122,38 @@ public class CameraController : MonoBehaviour
                     
                 }
             }
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                if (ballInMovePlatform)
+                {
+                    if (!ballController.IsPreparingToShoot)
+                    {
+                        Touch touch = Input.GetTouch(0);
+
+                        float horizontalInput = touch.deltaPosition.x * rotationSensitivity * Time.deltaTime;
+                        float verticalInput = touch.deltaPosition.y * rotationSensitivity * Time.deltaTime;
+
+                        transform.RotateAround(ballTransform.position, Vector3.up, horizontalInput);
+                        transform.RotateAround(ballTransform.position, transform.right, -verticalInput);
+
+                        transform.position = ballTransform.position + (transform.position - ballTransform.position).normalized * offset.magnitude;
+                        transform.LookAt(ballTransform);
+                    }
+                    if (ballController.IsPreparingToShoot)
+                    {
+                        Touch touch = Input.GetTouch(0);
+
+                        float horizontalInput = touch.deltaPosition.x * rotationSensitivity * Time.deltaTime;
+
+
+                        transform.RotateAround(ballTransform.position, Vector3.up, horizontalInput);
+
+
+                        transform.position = ballTransform.position + (transform.position - ballTransform.position).normalized * offset.magnitude;
+                        transform.LookAt(ballTransform);
+                    }
+                }
+            }
             else {
                 Vector3 targetPosition = transform.position = ballTransform.position + (transform.position - ballTransform.position).normalized * offset.magnitude; ;
                 transform.position = targetPosition;
