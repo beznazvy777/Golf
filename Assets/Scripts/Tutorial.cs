@@ -12,7 +12,7 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
 
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
 
     }
 

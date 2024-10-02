@@ -55,6 +55,7 @@ public class LevelSelectionController : MonoBehaviour
     {
         LoaderCanvas.SetActive(false);
         StartLevelUIConfig();
+	
     }
     public void LoadSelectLevel()
     {
@@ -67,9 +68,9 @@ public class LevelSelectionController : MonoBehaviour
 
         StartCoroutine("WhiteSelectorDisable");
         int value = PlayerPrefs.GetInt("FirstEnter");
-        if (level == 3 && value == 0)
+        if (level == 4 && value == 0)
         {
-            loadLevel = 12;
+            loadLevel = 3;
         }
         else
         {
